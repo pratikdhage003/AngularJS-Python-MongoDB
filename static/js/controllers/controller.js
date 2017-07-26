@@ -13,23 +13,27 @@ app.controller("AppCtrl", function ($http) {
 
     app.message = "let's solve it .....";
 
+    var refreshData = function () {
 
-    $http.get('http://0.0.0.0:8000/cities')
-        .then(function (response) {
-            var cdata = response.data;
-            var status = response.status;
-            var statusText = response.statusText;
-            var headers = response.headers;
-            var config = response.config;
+        $http.get('http://0.0.0.0:8000/cities')
+            .then(function (response) {
+                var cdata = response.data;
+                var status = response.status;
+                var statusText = response.statusText;
+                var headers = response.headers;
+                var config = response.config;
 
-            app.cities = cdata.results;
-            console.log(cdata.results);
-            console.log(status);
+                app.cities = cdata.results;
+                console.log(cdata.results);
+                console.log(status);
 
-        }, function (error) {
-            console.log(error, 'can not get data.');
-        });
+            }, function (error) {
+                console.log(error, 'can not get data.');
+            });
 
+    };
+
+    refreshData();
 
     app.findCity = function (enteredCity) {
         $http.get('http://0.0.0.0:8000/cities/' + enteredCity.cname).then(function (response) {
@@ -52,11 +56,11 @@ app.controller("AppCtrl", function ($http) {
         });
     }
 
-    app.addCity = function (newcity) {
-        $http.post('http://0.0.0.0:8000/cities', {"cname": newcity.cname, "state": newcity.state}).then(function (response) {
+    app.addCity = function (city) {
+        $http.post('http://0.0.0.0:8000/cities', {"cname": city.cname, "state": city.state}).then(function (response) {
             console.log(".....addCity.....");
-            console.log(newcity.cname);
-            console.log(newcity.state);
+            console.log(city.cname);
+            console.log(city.state);
 
             app.cities.push(response.data.output);
 
@@ -70,8 +74,10 @@ app.controller("AppCtrl", function ($http) {
             app.city = cdata.output;
             console.log(cdata.output);
 
+            refreshData();
+
         }, function (error) {
-             console.log(error, 'can not post the city data.');
+            console.log(error, 'can not post the city data.');
         });
     }
 
@@ -98,10 +104,10 @@ app.controller("AppCtrl", function ($http) {
 
     app.updateCity = function (updatecity) {
         console.log("In the updateCity");
-        $http.put('http://0.0.0.0:8000/cities/' + app.editcity.cname ,{"cname": updatecity.cname}).then(function (response) {
+        $http.put('http://0.0.0.0:8000/cities/' + app.editcity.cname, {"cname": updatecity.cname}).then(function (response) {
 
             console.log("inside updateCity");
-            console.log(app.editcity.cname +" .... "+ updatecity.cname);
+            console.log(app.editcity.cname + " .... " + updatecity.cname);
 
             var cdata = response.data;
             var status = response.status;
