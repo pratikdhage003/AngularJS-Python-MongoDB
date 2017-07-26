@@ -29,6 +29,7 @@
         <tr ng-repeat="city in app.cities">
             <td> {[{ city.cname }]}</td>
             <td> {[{ city.state }]}</td>
+            <td><button class="btn btn-danger" ng-click="app.deleteCity(city)">Delete City</button></td>
         </tr>
         </tbody>
     </table>

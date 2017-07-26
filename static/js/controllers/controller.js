@@ -140,6 +140,7 @@ app.controller("AppCtrl", function ($http) {
             console.log(status);
             app.city = cdata.output;
             console.log(cdata.output);
+            refreshData();
 
         }, function (error) {
             console.log(error, 'can not delete the given city data.');
