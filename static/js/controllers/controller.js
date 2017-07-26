@@ -14,7 +14,7 @@ app.controller("AppCtrl", function ($http) {
     app.message = "let's solve it .....";
 
 
-    $http.get('http://localhost:5000/cities')
+    $http.get('http://0.0.0.0:8000/cities')
         .then(function (response) {
             var cdata = response.data;
             var status = response.status;
@@ -32,7 +32,7 @@ app.controller("AppCtrl", function ($http) {
 
 
     app.findCity = function (enteredCity) {
-        $http.get('http://localhost:5000/cities/' + enteredCity.cname).then(function (response) {
+        $http.get('http://0.0.0.0:8000/cities/' + enteredCity.cname).then(function (response) {
 
             console.log("inside findCity");
             console.log(enteredCity.cname);
@@ -53,7 +53,7 @@ app.controller("AppCtrl", function ($http) {
     }
 
     app.addCity = function (newcity) {
-        $http.post('http://localhost:5000/cities', {"cname": newcity.cname, "state": newcity.state}).then(function (response) {
+        $http.post('http://0.0.0.0:8000/cities', {"cname": newcity.cname, "state": newcity.state}).then(function (response) {
             console.log(".....addCity.....");
             console.log(newcity.cname);
             console.log(newcity.state);
@@ -76,7 +76,7 @@ app.controller("AppCtrl", function ($http) {
     }
 
     app.editCity = function (editCity) {
-        $http.get('http://localhost:5000/cities/' + editCity.cname).then(function (response) {
+        $http.get('http://0.0.0.0:8000/cities/' + editCity.cname).then(function (response) {
 
             console.log("inside editCity");
             console.log(editCity.cname);
@@ -98,7 +98,7 @@ app.controller("AppCtrl", function ($http) {
 
     app.updateCity = function (updatecity) {
         console.log("In the updateCity");
-        $http.put('http://localhost:5000/cities/' + app.editcity.cname ,{"cname": updatecity.cname}).then(function (response) {
+        $http.put('http://0.0.0.0:8000/cities/' + app.editcity.cname ,{"cname": updatecity.cname}).then(function (response) {
 
             console.log("inside updateCity");
             console.log(app.editcity.cname +" .... "+ updatecity.cname);
@@ -119,7 +119,7 @@ app.controller("AppCtrl", function ($http) {
     }
 
     app.deleteCity = function (deletecity) {
-        $http.delete('http://localhost:5000/cities/' + deletecity.cname).then(function (response) {
+        $http.delete('http://0.0.0.0:8000/cities/' + deletecity.cname).then(function (response) {
 
             console.log("inside deleteCity");
             console.log(deletecity.cname);
