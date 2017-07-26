@@ -26,6 +26,7 @@ app.controller("AppCtrl", function ($http) {
                 app.cities = cdata.results;
                 console.log(cdata.results);
                 console.log(status);
+                app.city = "";
 
             }, function (error) {
                 console.log(error, 'can not get data.');
