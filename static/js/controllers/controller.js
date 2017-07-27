@@ -8,7 +8,7 @@ app.config(['$interpolateProvider', function ($interpolateProvider) {
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
 }]);
 
-app.controller("AppCtrl", function ($http) {
+app.controller("AppCtrl", function ($scope, $http) {
     var app = this;
 
     app.message = "let's solve it .....";
@@ -36,28 +36,7 @@ app.controller("AppCtrl", function ($http) {
 
     refreshData();
 
-    app.findCity = function (enteredCity) {
-        $http.get('http://0.0.0.0:8000/cities/' + enteredCity.cname).then(function (response) {
-
-            console.log("inside findCity");
-            console.log(enteredCity.cname);
-
-            var cdata = response.data;
-            var status = response.status;
-            var statusText = response.statusText;
-            var headers = response.headers;
-            var config = response.config;
-
-            console.log(status);
-            app.city = cdata.output;
-            console.log(cdata.output);
-
-        }, function (error) {
-            console.log(error, 'can not get the given city data.');
-        });
-    }
-
-    app.addCity = function (city) {
+    app.addCityState = function (city) {
         $http.post('http://0.0.0.0:8000/cities', {"cname": city.cname, "state": city.state}).then(function (response) {
             console.log(".....addCity.....");
             console.log(city.cname);
@@ -80,13 +59,16 @@ app.controller("AppCtrl", function ($http) {
         }, function (error) {
             console.log(error, 'can not post the city data.');
         });
-    }
 
-    app.editCity = function (editCity) {
-        $http.get('http://0.0.0.0:8000/cities/' + editCity.cname).then(function (response) {
+    };
+
+    app.editState = function (city) {
+        $http.get('http://0.0.0.0:8000/cities/' + city.cname).then(function (response) {
 
             console.log("inside editCity");
-            console.log(editCity.cname);
+            console.log(city.cname);
+            console.log(city.state);
+
 
             var cdata = response.data;
             var status = response.status;
@@ -95,41 +77,45 @@ app.controller("AppCtrl", function ($http) {
             var config = response.config;
 
             console.log(status);
-            app.editcity = cdata.output;
-            console.log(cdata.output);
+            $scope.city = cdata.output;
 
         }, function (error) {
             console.log(error, 'can not get the given city data.');
         });
+    };
+
+    // updates the state for a given city
+    app.updateState = function (city) {
+        if (city.cname !== '' &&  city.state !== '') {
+            $http.put('http://0.0.0.0:8000/cities/' + city.cname, {
+                "cname": city.cname,
+                "state": city.state
+            }).then(function (response) {
+
+
+                var cdata = response.data;
+                var status = response.status;
+                var statusText = response.statusText;
+                var headers = response.headers;
+                var config = response.config;
+
+                console.log(status);
+                $scope.city = cdata.output;
+                console.log(cdata.output);
+
+            }, function (error) {
+                console.log(error, 'can not update given city data.');
+            });
+        }
+
+
     }
 
-    app.updateCity = function (updatecity) {
-        console.log("In the updateCity");
-        $http.put('http://0.0.0.0:8000/cities/' + app.editcity.cname, {"cname": updatecity.cname}).then(function (response) {
-
-            console.log("inside updateCity");
-            console.log(app.editcity.cname + " .... " + updatecity.cname);
-
-            var cdata = response.data;
-            var status = response.status;
-            var statusText = response.statusText;
-            var headers = response.headers;
-            var config = response.config;
-
-            console.log(status);
-            app.editcity = cdata.output;
-            console.log(cdata.output);
-
-        }, function (error) {
-            console.log(error, 'can not get the given city data.');
-        });
-    }
-
-    app.deleteCity = function (deletecity) {
-        $http.delete('http://0.0.0.0:8000/cities/' + deletecity.cname).then(function (response) {
+    app.deleteCityState = function (city) {
+        $http.delete('http://0.0.0.0:8000/cities/' + city.cname).then(function (response) {
 
             console.log("inside deleteCity");
-            console.log(deletecity.cname);
+            console.log(city.cname);
 
             var cdata = response.data;
             var status = response.status;
@@ -145,6 +131,6 @@ app.controller("AppCtrl", function ($http) {
         }, function (error) {
             console.log(error, 'can not delete the given city data.');
         });
-    }
+    };
 
 });

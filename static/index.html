@@ -7,32 +7,46 @@
     <title> Cities app using Angular, flask and PyMongo </title>
 </head>
 
-<body>
+<body bgcolor="gray">
 <div class="container" ng-app="app" ng-controller="AppCtrl as app">
     <h1>Cities App</h1>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>City Name</th>
-            <th>City State</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><input class="form-control" ng-model="city.cname"></td>
-            <td><input class="form-control" ng-model="city.state"></td>
-            <td>
-                <button class="btn btn-primary" ng-click="app.addCity(city)">Add new city</button>
-            </td>
-        </tr>
-        <tr ng-repeat="city in app.cities">
-            <td> {[{ city.cname }]}</td>
-            <td> {[{ city.state }]}</td>
-            <td><button class="btn btn-danger" ng-click="app.deleteCity(city)">Delete City</button></td>
-        </tr>
-        </tbody>
-    </table>
+    <form name="cityForm">
+        <div class="container">
+            <table class="table">
+            <thead>
+            <tr>
+                <th>City Name</th>
+                <th>City State</th>
+                <th>Action</th>
+                <th>Modify Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input class="form-control" ng-model="city.cname" name="cityName"></td>
+                <td><input class="form-control" ng-model="city.state" name="stateName"></td>
+                <td>
+                    <button class="btn btn-primary" ng-click="app.addCityState(city)" ng-disabled="cityForm.stateName.$pristine">Add New Record</button>
+                </td>
+                <td>
+                    <button class="btn btn-secondary" ng-click="app.updateState(city)" ng-disabled="cityForm.stateName.$pristine">Update State
+                    </button>
+                </td>
+            </tr>
+            <tr ng-repeat="city in app.cities">
+                <td> {[{ city.cname }]}</td>
+                <td> {[{ city.state }]}</td>
+                <td>
+                    <button class="btn btn-danger" ng-click="app.deleteCityState(city)">Delete Record</button>
+                </td>
+                <td>
+                    <button class="btn btn-warning" ng-click="app.editState(city)">Edit State</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </form>
 </div>
 <script src="bower_components/angular/angular.js"></script>
 <script src="js/controllers/controller.js"></script>
