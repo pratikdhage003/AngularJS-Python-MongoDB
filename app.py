@@ -16,16 +16,16 @@ app.config['MONGO_URI'] = 'mongodb://pratikdhage:thedarkknightrises@ds125113.mla
 mongo = PyMongo(app)
 
 
-@app.route('/')
+@app.route('/todo/api/v1.0/')
 @cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
 def index():
     return app.send_static_file("index.html")
 
 
 # HTTP GET request for displaying all cities
-@app.route('/cities', methods=['GET'])
+@app.route('/todo/api/v1.0/cities', methods=['GET'])
 @cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
-def get_all_records():
+def get_all_city_records():
     cities = mongo.db.cities
     results = []
     for q in cities.find():
@@ -33,7 +33,7 @@ def get_all_records():
     return jsonify({'results': results})
 
 # HTTP POST request for adding new city
-@app.route('/cities', methods=['POST'])
+@app.route('/todo/api/v1.0/cities', methods=['POST'])
 @cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
 def add_city_state():
     cities = mongo.db.cities
@@ -45,9 +45,9 @@ def add_city_state():
     return jsonify({'output': output})
 
 # HTTP GET request for getting a particular city
-@app.route('/cities/<string:cname>', methods=['GET'])
+@app.route('/todo/api/v1.0/cities/<string:cname>', methods=['GET'])
 @cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
-def get_record(cname):
+def get_city_record(cname):
     cities = mongo.db.cities
     q = cities.find_one({'cname': cname})
     if q:
@@ -58,7 +58,7 @@ def get_record(cname):
 
 
 # HTTP PUT request for modifying existing city
-@app.route('/cities/<string:cname>', methods=['PUT'])
+@app.route('/todo/api/v1.0/cities/<string:cname>', methods=['PUT'])
 @cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
 def update_state(cname):
     cities = mongo.db.cities
@@ -73,9 +73,9 @@ def update_state(cname):
 
 
 # HTTP DELETE request for deleting/removing a particular city
-@app.route('/cities/<string:cname>', methods=['DELETE'])
+@app.route('/todo/api/v1.0/cities/<string:cname>', methods=['DELETE'])
 @cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
-def delete_record(cname):
+def delete_city_record(cname):
     cities = mongo.db.cities
     q = cities.find_one({'cname': cname})
     if q:
