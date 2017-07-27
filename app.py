@@ -25,18 +25,29 @@ def index():
 # HTTP GET request for displaying all cities
 @app.route('/cities', methods=['GET'])
 @cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
-def get_all_cities():
+def get_all_records():
     cities = mongo.db.cities
     results = []
     for q in cities.find():
         results.append({'cname': q['cname'], 'state': q['state']})
     return jsonify({'results': results})
 
+# HTTP POST request for adding new city
+@app.route('/cities', methods=['POST'])
+@cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
+def add_city_state():
+    cities = mongo.db.cities
+    cityname = request.json['cname']
+    state = request.json['state']
+    city_id = cities.insert({'cname': cityname, 'state': state})
+    new_city = cities.find_one({'_id': city_id})
+    output = {'cname': new_city['cname'], 'state': new_city['state']}
+    return jsonify({'output': output})
 
-# HTTP GET request for displaying a particular city
+# HTTP GET request for getting a particular city
 @app.route('/cities/<string:cname>', methods=['GET'])
 @cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
-def get_city(cname):
+def get_record(cname):
     cities = mongo.db.cities
     q = cities.find_one({'cname': cname})
     if q:
@@ -46,38 +57,25 @@ def get_city(cname):
     return jsonify({'output': output})
 
 
-# HTTP POST request for adding new city
-@app.route('/cities', methods=['POST'])
-@cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
-def add_city():
-    cities = mongo.db.cities
-    cityname = request.json['cname']
-    state = request.json['state']
-    city_id = cities.insert({'cname': cityname, 'state': state})
-    new_city = cities.find_one({'_id': city_id})
-    output = {'cname': new_city['cname'], 'state': new_city['state']}
-    return jsonify({'output': output})
-
-
 # HTTP PUT request for modifying existing city
 @app.route('/cities/<string:cname>', methods=['PUT'])
 @cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
-def update_city(cname):
+def update_state(cname):
     cities = mongo.db.cities
     data = request.get_json()
-    q = cities.find_one({'cname': cname})
-    if q:
-        output = data['cname']
-        mongo.db.cities.update_one({'cname': cname}, {'$set': data})
-    else:
-        output = 'Sorry !....no results found.'
-    return jsonify({'output': output})
+    # q = cities.find_one({'cname': cname})
+    # if q:
+    #     output = data['cname']
+    mongo.db.cities.update({'cname': cname}, {'$set': data})
+    # else:
+    #     output = 'Sorry !....no results found.'
+    return jsonify({'output': "success"})
 
 
 # HTTP DELETE request for deleting/removing a particular city
 @app.route('/cities/<string:cname>', methods=['DELETE'])
 @cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
-def delete_city(cname):
+def delete_record(cname):
     cities = mongo.db.cities
     q = cities.find_one({'cname': cname})
     if q:
