@@ -15,7 +15,7 @@ app.controller("AppCtrl", function ($scope, $http) {
 
     var refreshData = function () {
 
-        $http.get('http://0.0.0.0:8000/cities')
+        $http.get('http://0.0.0.0:8000/todo/api/v1.0/cities')
             .then(function (response) {
                 var cdata = response.data;
                 var status = response.status;
@@ -37,7 +37,7 @@ app.controller("AppCtrl", function ($scope, $http) {
     refreshData();
 
     app.addCityState = function (city) {
-        $http.post('http://0.0.0.0:8000/cities', {"cname": city.cname, "state": city.state}).then(function (response) {
+        $http.post('http://0.0.0.0:8000/todo/api/v1.0/cities', {"cname": city.cname, "state": city.state}).then(function (response) {
             console.log(".....addCity.....");
             console.log(city.cname);
             console.log(city.state);
@@ -63,7 +63,7 @@ app.controller("AppCtrl", function ($scope, $http) {
     };
 
     app.editState = function (city) {
-        $http.get('http://0.0.0.0:8000/cities/' + city.cname).then(function (response) {
+        $http.get('http://0.0.0.0:8000/todo/api/v1.0/cities/' + city.cname).then(function (response) {
 
             console.log("inside editCity");
             console.log(city.cname);
@@ -84,10 +84,12 @@ app.controller("AppCtrl", function ($scope, $http) {
         });
     };
 
+
+
     // updates the state for a given city
     app.updateState = function (city) {
         if (city.cname !== '' &&  city.state !== '') {
-            $http.put('http://0.0.0.0:8000/cities/' + city.cname, {
+            $http.put('http://0.0.0.0:8000/todo/api/v1.0/cities/' + city.cname, {
                 "cname": city.cname,
                 "state": city.state
             }).then(function (response) {
@@ -112,7 +114,7 @@ app.controller("AppCtrl", function ($scope, $http) {
     }
 
     app.deleteCityState = function (city) {
-        $http.delete('http://0.0.0.0:8000/cities/' + city.cname).then(function (response) {
+        $http.delete('http://0.0.0.0:8000/todo/api/v1.0/cities/' + city.cname).then(function (response) {
 
             console.log("inside deleteCity");
             console.log(city.cname);
