@@ -84,8 +84,6 @@ app.controller("AppCtrl", function ($scope, $http) {
         });
     };
 
-
-
     // updates the state for a given city
     app.updateState = function (city) {
         if (city.cname !== '' &&  city.state !== '') {
