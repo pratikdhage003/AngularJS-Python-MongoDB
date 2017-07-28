@@ -15,7 +15,6 @@ app.config['MONGO_URI'] = 'mongodb://pratikdhage:thedarkknightrises@ds125113.mla
 
 mongo = PyMongo(app)
 
-
 @app.route('/todo/api/v1.0/')
 @cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
 def index():
@@ -31,6 +30,7 @@ def get_all_city_records():
     for q in cities.find():
         results.append({'cname': q['cname'], 'state': q['state']})
     return jsonify({'results': results})
+
 
 # HTTP POST request for adding new city
 @app.route('/todo/api/v1.0/cities', methods=['POST'])
