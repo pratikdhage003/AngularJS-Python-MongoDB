@@ -26,7 +26,7 @@ app.controller("AppCtrl", function ($scope, $http) {
                 app.cities = cdata.results;
                 console.log(cdata.results);
                 console.log(status);
-                app.city = "";
+                app.city = '';
 
             }, function (error) {
                 console.log(error, 'can not get data.');
@@ -51,7 +51,7 @@ app.controller("AppCtrl", function ($scope, $http) {
             var config = response.config;
 
             console.log(status);
-            app.city = cdata.output;
+            $scope.city = cdata.output;
             console.log(cdata.output);
 
             refreshData();
@@ -86,7 +86,9 @@ app.controller("AppCtrl", function ($scope, $http) {
 
     // updates the state for a given city
     app.updateState = function (city) {
-        if (city.cname !== '' &&  city.state !== '') {
+        if (city.cname === '' &&  city.state == '') {
+            alert("Please enter the values");
+        }else{
             $http.put('http://0.0.0.0:8000/todo/api/v1.0/cities/' + city.cname, {
                 "cname": city.cname,
                 "state": city.state
@@ -102,12 +104,12 @@ app.controller("AppCtrl", function ($scope, $http) {
                 console.log(status);
                 $scope.city = cdata.output;
                 console.log(cdata.output);
+                refreshData();
 
             }, function (error) {
                 console.log(error, 'can not update given city data.');
             });
         }
-
 
     }
 
@@ -124,7 +126,7 @@ app.controller("AppCtrl", function ($scope, $http) {
             var config = response.config;
 
             console.log(status);
-            app.city = cdata.output;
+            $scope.city = cdata.output;
             console.log(cdata.output);
             refreshData();
 
