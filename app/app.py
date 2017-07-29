@@ -2,7 +2,7 @@
 AUTHOR : PRATIK DHAGE
 RESTful API using flask, PyMongo, MongoDB for the collection cities
 """
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_pymongo import PyMongo
 from flask_cors import CORS, cross_origin
 
@@ -19,7 +19,7 @@ mongo = PyMongo(app)
 @app.route('/todo/api/v1.0/')
 @cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
 def index():
-    return app.send_static_file("index.html")
+    return render_template("cities.html")
 
 
 # HTTP GET request for displaying all cities
