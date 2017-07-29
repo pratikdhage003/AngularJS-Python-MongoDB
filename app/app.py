@@ -15,6 +15,7 @@ app.config['MONGO_URI'] = 'mongodb://pratikdhage:thedarkknightrises@ds125113.mla
 
 mongo = PyMongo(app)
 
+
 @app.route('/todo/api/v1.0/')
 @cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
 def index():
@@ -43,6 +44,7 @@ def add_city_state():
     new_city = cities.find_one({'_id': city_id})
     output = {'cname': new_city['cname'], 'state': new_city['state']}
     return jsonify({'output': output})
+
 
 # HTTP GET request for getting a particular city
 @app.route('/todo/api/v1.0/cities/<string:cname>', methods=['GET'])
@@ -87,6 +89,4 @@ def delete_city_record(cname):
 
 
 if __name__ == '__main__':
-    app.debug = True
-    app.run(host="0.0.0.0", port=8000)
-
+    app.run(host="0.0.0.0", port=8001, debug=True)
