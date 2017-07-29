@@ -2,8 +2,8 @@ version: '3'
 
 services:
   city-service:
-    build: .
+    build: ./app
     volumes:
-      - . :/usr/src/app
+      - ./app:/usr/src/app
     ports:
-      - 8000:80                 
+      - 8001:80                 
