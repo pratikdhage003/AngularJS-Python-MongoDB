@@ -1,9 +1,16 @@
 version: '3'
 
 services:
-  city-service:
-    build: ./app
+  angular-client-service: # name of the first service
+    build: ./app/angular-client/static
     volumes:
-      - ./app:/usr/src/app
+      - ./app/angular-client/static:/usr/share/nginx/html
     ports:
-      - 3333:8001                 
+      - "1111:80" # specify port forewarding
+
+  flask-service:
+    build: ./app/flask-server
+    volumes:
+      - ./app/flask-server:/usr/src/app
+    ports:
+      - "8001:8001"                 
