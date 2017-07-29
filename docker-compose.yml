@@ -1,12 +1,12 @@
 version: '3'
 
 services:
-  angular-client-service: # name of the first service
-    build: ./app/angular-client/static
-    volumes:
+  angular-client-service: # name of the angular-client service
+    build: ./app/angular-client/static  # directory of the Dockerfile
+    volumes:  # enables to see live changes
       - ./app/angular-client/static:/usr/share/nginx/html
     ports:
-      - "1111:80" # specify port forewarding
+      - "1111:80" # specify port forewarding, 80 is the port of the container
 
   flask-service:
     build: ./app/flask-server
