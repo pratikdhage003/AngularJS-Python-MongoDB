@@ -6,4 +6,4 @@ services:
     volumes:
       - ./app:/usr/src/app
     ports:
-      - 7002:70                 
+      - 3333:8001                 
