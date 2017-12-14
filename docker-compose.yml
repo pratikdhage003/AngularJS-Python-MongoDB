@@ -1,14 +1,14 @@
 version: '3'
 
 services:
-  angular-client-service: # name of the angular-client service
+  angular-client-service: # name of the angular-client service built with AngularJS frontend
     build: ./app/angular-client/static  # directory of the Dockerfile
     volumes:  # enables to see live changes
       - ./app/angular-client/static:/usr/share/nginx/html
     ports:
-      - "1111:80" # specify port forewarding, 80 is the port of the container
+      - "1111:80" # specify port forwarding, 80 is the port of the container
 
-  flask-service:
+  flask-service: # name of the flask-service built with Python backend
     build: ./app/flask-server
     volumes:
       - ./app/flask-server:/usr/src/app
