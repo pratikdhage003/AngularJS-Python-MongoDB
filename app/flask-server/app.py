@@ -65,12 +65,7 @@ def get_city_record(cname):
 def update_state(cname):
     cities = mongo.db.cities
     data = request.get_json()
-    # q = cities.find_one({'cname': cname})
-    # if q:
-    #     output = data['cname']
     mongo.db.cities.update({'cname': cname}, {'$set': data})
-    # else:
-    #     output = 'Sorry !....no results found.'
     return jsonify({'output': "success"})
 
 
