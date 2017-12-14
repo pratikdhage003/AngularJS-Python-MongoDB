@@ -8,6 +8,7 @@ app.config(['$interpolateProvider', function ($interpolateProvider) {
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
 }]);
 
+// Loads the app
 app.controller("AppCtrl", function ($scope, $http) {
     var app = this;
 
@@ -24,8 +25,12 @@ app.controller("AppCtrl", function ($scope, $http) {
 
     refreshData();
 
+    // adds a new record
     app.addCityState = function (city) {
-        $http.post('http://0.0.0.0:8001/todo/api/v1.0/cities', {"cname": city.cname, "state": city.state}).then(function (response) {
+        $http.post('http://0.0.0.0:8001/todo/api/v1.0/cities', {
+            "cname": city.cname,
+            "state": city.state
+        }).then(function (response) {
 
             app.cities.push(response.data.output);
             $scope.city = response.data.output;
@@ -36,6 +41,7 @@ app.controller("AppCtrl", function ($scope, $http) {
         });
     };
 
+    // edit functionality for the state for a given city
     app.editState = function (city) {
         $http.get('http://0.0.0.0:8001/todo/api/v1.0/cities/' + city.cname).then(function (response) {
 
@@ -48,7 +54,7 @@ app.controller("AppCtrl", function ($scope, $http) {
 
     // updates the state for a given city
     app.updateState = function (city) {
-        if (city.cname !== '' &&  city.state !== '') {
+        if (city.cname !== '' && city.state !== '') {
             $http.put('http://0.0.0.0:8001/todo/api/v1.0/cities/' + city.cname, {
                 "cname": city.cname,
                 "state": city.state
@@ -63,6 +69,7 @@ app.controller("AppCtrl", function ($scope, $http) {
         }
     };
 
+    // deletes a given record
     app.deleteCityState = function (city) {
         $http.delete('http://0.0.0.0:8001/todo/api/v1.0/cities/' + city.cname).then(function (response) {
 
