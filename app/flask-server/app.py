@@ -27,10 +27,10 @@ def index():
 @cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
 def get_all_city_records():
     cities = mongo.db.cities
-    results = []
+    output = []
     for q in cities.find():
-        results.append({'cname': q['cname'], 'state': q['state']})
-    return jsonify({'results': results})
+        output.append({'cname': q['cname'], 'state': q['state']})
+    return jsonify({'output': output})
 
 
 # HTTP POST request for adding new city
