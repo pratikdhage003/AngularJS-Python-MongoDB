@@ -12,9 +12,10 @@ Docker : Build once, Run anywhere is the basic principle, hence Docker!
 Front End : AngularJS based code supporting CRUD operations for Cities (inside the folder angular-client/), 
 			index.html, CSS alongwith it.Running front end app on nginx server.
 
-			controller.js  -->  AngularJs Controller code caaling  factory service CityOpFactory(residing inside CityService.js) 	                     
+			controller.js  --> AngularJs Controller code calling factory service CityOpFactory(residing inside CityService.js) 	                     
 
-			CityService.js -->  contains factory service CityOpFactory for creating AngularJs services.It contains REST API HTTP URLs, it then talks to flask-server   
+			CityService.js --> contains factory service CityOpFactory for creating AngularJs services.
+							   also has REST API HTTP URLs, it then talks to flask-server   
 
 BackEnd :  Python Flask based Python(flask-server/ folder) code supporting RESTful APIs for CRUD functionality, connected to 				   MongoDB database remote server, every REST API method has support of CORS enabled methods(Cross-Origin Resource Sharing  		  (CORS)  is a mechanism which uses additional HTTP headers to let a user agent gain permission to access selected 				       resources from  a  server on a different origin (domain) than the site currently in use)
 		   used PyMongo library for communicating with MongoDB database.
