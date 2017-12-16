@@ -9,10 +9,10 @@ Docker : Build once, Run anywhere is the basic principle, hence Docker!
 		 Separate DockerFile(in each folder for  angularjs-client and Python flask-server back end application), 
 		 note that in  docker-compose.yml, port is to which angular-client("1111:80"), flask-server("8001:8001" ) listen are different
 
-Front End : AngularJS based code supporting CRUD operations for Cities (inside the folder angular-client/), 
+Front End : AngularJS based (CityApp) code supporting CRUD operations for Cities (inside the folder angular-client/), 
 			index.html, CSS alongwith it.Running front end app on nginx server.
 
-			controller.js  --> AngularJs Controller code calling factory service CityOpFactory(residing inside CityService.js) 	                     
+			CityAppController.js  --> AngularJs Controller code calling factory service CityOpFactory(residing inside 	CityService.js) 	                     
 
 			CityService.js --> contains factory service CityOpFactory for creating AngularJs services.
 							   also has REST API HTTP URLs, it then talks to flask-server   
