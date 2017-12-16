@@ -1,84 +1,109 @@
 /**
- * Created by pratikdhage on 7/24/17.
+ * Created by pratikdhage on 12/15/17.
  */
 
-var app = angular.module("app", []);
+
+// added CityService as module dependency
+var app = angular.module("app", ["CityService"]);
 
 app.config(['$interpolateProvider', function ($interpolateProvider) {
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
 }]);
 
-// Loads the app
-app.controller("AppCtrl", function ($scope, $http) {
+
+//Injected factory service 'CityOpFactory'
+app.controller("AppCtrl", function ($scope, $http, CityOpFactory) {
+
     var app = this;
 
+    // display all data
     var refreshData = function () {
-        $http.get('http://0.0.0.0:8001/todo/api/v1.0/cities')
-            .then(function (response) {
-                app.cities = response.data.results;
-                app.city = "";
 
-            }, function (error) {
-                console.log(error, 'can not get data.');
-            });
+        CityOpFactory.refreshCityStateService()
+            .then(function (response) {
+
+                    app.citytable = response.data.output;
+
+                }, function (error) {
+                    console.log('can not get the data.' + error.message);
+                }
+            );
+
     };
 
     refreshData();
 
     // adds a new record
-    app.addCityState = function (city) {
-        $http.post('http://0.0.0.0:8001/todo/api/v1.0/cities', {
-            "cname": city.cname,
-            "state": city.state
-        }).then(function (response) {
+    app.addCityState = function (cityrecord) {
+        if (cityrecord.cname !== '' || cityrecord.state !== '') {
 
-            app.cities.push(response.data.output);
-            $scope.city = response.data.output;
-            refreshData();
+            CityOpFactory.addCityStateService(cityrecord)
+                .then(function (response) {
 
-        }, function (error) {
-            console.log(error, 'can not post the city data.');
-        });
-    };
+                        app.citytable.push(response.data.output);
+                        $scope.cityrecord = {};
+                        refreshData();
 
-    // edit functionality for the state for a given city
-    app.editState = function (city) {
-        $http.get('http://0.0.0.0:8001/todo/api/v1.0/cities/' + city.cname).then(function (response) {
-
-            $scope.city = response.data.output;
-
-        }, function (error) {
-            console.log(error, 'can not get the given city data.');
-        });
-    };
-
-    // updates the state for a given city
-    app.updateState = function (city) {
-        if (city.cname !== '' && city.state !== '') {
-            $http.put('http://0.0.0.0:8001/todo/api/v1.0/cities/' + city.cname, {
-                "cname": city.cname,
-                "state": city.state
-            }).then(function (response) {
-
-                $scope.city = response.data.output;
-                refreshData();
-
-            }, function (error) {
-                console.log(error, 'can not update given city data.');
-            });
+                    }, function (error) {
+                        console.log('can not post the cityrecord data.' + error.message);
+                    }
+                );
         }
     };
 
     // deletes a given record
-    app.deleteCityState = function (city) {
-        $http.delete('http://0.0.0.0:8001/todo/api/v1.0/cities/' + city.cname).then(function (response) {
+    app.deleteCityState = function (cityrecord) {
 
-            $scope.city = response.data.output;
-            refreshData();
+        CityOpFactory.deleteCityStateService(cityrecord)
+            .then(function (response) {
 
-        }, function (error) {
-            console.log(error, 'can not delete the given city data.');
-        });
+                    $scope.cityrecord = response.data.output;
+                    refreshData();
+
+                }, function (error) {
+                    console.log('can not delete the given cityrecord data.' + error.message);
+                }
+            );
     };
+
+    // edit functionality for the state for a given cityrecord
+    app.editState = function (cityrecord) {
+
+        if (cityrecord.cname !== '' || cityrecord.state !== '') {
+
+            CityOpFactory.editCityStateService(cityrecord)
+                .then(function (response) {
+
+                        $scope.cityrecord = response.data.output;
+                        refreshData();
+
+                    }, function (error) {
+                        console.log('can not edit the cityrecord data.' + error.message);
+                    }
+                );
+        }
+
+    };
+
+    // updates the state for a given cityrecord
+    app.updateState = function (cityrecord) {
+
+        if (cityrecord.cname !== '' || cityrecord.state !== '') {
+
+            CityOpFactory.updateCityStateService(cityrecord)
+                .then(function (response) {
+
+                        app.citytable.push(response.data.output);
+                        $scope.cityrecord = {};
+                        refreshData();
+
+                    }, function (error) {
+                        console.log('can not update the given cityrecord data.' + error.message);
+                    }
+                );
+        }
+
+    };
+
 
 });
