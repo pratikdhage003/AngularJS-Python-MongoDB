@@ -4,11 +4,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <meta charset="UTF-8">
-    <title> Cities app using Angular, flask and PyMongo </title>
+    <title> City information App using AngularJS, Python flask and PyMongo </title>
 </head>
 
 <body style="background-color: transparent">
-<div class="container" ng-app="app" ng-controller="AppCtrl as app">
+<div class="container" ng-app="CityApp" ng-controller="CityAppController as CityApp">
     <h1>CITY RECORDS</h1>
     <br><br>
     <form name="cityForm">
@@ -27,24 +27,24 @@
                     <td><input class="form-control" ng-model="cityrecord.cname" name="cityName" size="default"></td>
                     <td><input class="form-control" ng-model="cityrecord.state" name="stateName" size="default"></td>
                     <td>
-                        <button class="btn btn-primary" ng-click="app.addCityState(cityrecord)"
+                        <button class="btn btn-primary" ng-click="CityApp.addCityState(cityrecord)"
                                 ng-disabled="cityForm.stateName.$pristine">Add New Record
                         </button>
                     </td>
                     <td>
-                        <button class="btn btn-info" ng-click="app.updateState(cityrecord)"
+                        <button class="btn btn-info" ng-click="CityApp.updateState(cityrecord)"
                                 ng-disabled="cityForm.stateName.$pristine">Update State
                         </button>
                     </td>
                 </tr>
-                <tr ng-repeat="cityrecord in app.citytable">
+                <tr ng-repeat="cityrecord in CityApp.citytable">
                     <td><b> {[{ cityrecord.cname }]} </b></td>
                     <td><b> {[{ cityrecord.state }]} </b></td>
                     <td>
-                        <button class="btn btn-danger" ng-click="app.deleteCityState(cityrecord)">Delete Record</button>
+                        <button class="btn btn-danger" ng-click="CityApp.deleteCityState(cityrecord)">Delete Record</button>
                     </td>
                     <td>
-                        <button class="btn btn-warning" ng-click="app.editState(cityrecord)">Edit State</button>
+                        <button class="btn btn-warning" ng-click="CityApp.editState(cityrecord)">Edit State</button>
                     </td>
                 </tr>
                 </tbody>
@@ -54,7 +54,7 @@
 </div>
 <script src="bower_components/angular/angular.js"></script>
 <script src="js/services/CityService.js"></script>
-<script src="js/controllers/controller.js"></script>
+<script src="js/controllers/CityAppController.js"></script>
 </body>
 </html>
 
