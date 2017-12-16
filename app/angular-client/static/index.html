@@ -24,27 +24,27 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><input class="form-control" ng-model="city.cname" name="cityName" size="default"></td>
-                    <td><input class="form-control" ng-model="city.state" name="stateName" size="default"></td>
+                    <td><input class="form-control" ng-model="cityrecord.cname" name="cityName" size="default"></td>
+                    <td><input class="form-control" ng-model="cityrecord.state" name="stateName" size="default"></td>
                     <td>
-                        <button class="btn btn-primary" ng-click="app.addCityState(city)"
+                        <button class="btn btn-primary" ng-click="app.addCityState(cityrecord)"
                                 ng-disabled="cityForm.stateName.$pristine">Add New Record
                         </button>
                     </td>
                     <td>
-                        <button class="btn btn-info" ng-click="app.updateState(city)"
+                        <button class="btn btn-info" ng-click="app.updateState(cityrecord)"
                                 ng-disabled="cityForm.stateName.$pristine">Update State
                         </button>
                     </td>
                 </tr>
-                <tr ng-repeat="city in app.cities">
-                    <td><b> {[{ city.cname }]} </b></td>
-                    <td><b> {[{ city.state }]} </b></td>
+                <tr ng-repeat="cityrecord in app.citytable">
+                    <td><b> {[{ cityrecord.cname }]} </b></td>
+                    <td><b> {[{ cityrecord.state }]} </b></td>
                     <td>
-                        <button class="btn btn-danger" ng-click="app.deleteCityState(city)">Delete Record</button>
+                        <button class="btn btn-danger" ng-click="app.deleteCityState(cityrecord)">Delete Record</button>
                     </td>
                     <td>
-                        <button class="btn btn-warning" ng-click="app.editState(city)">Edit State</button>
+                        <button class="btn btn-warning" ng-click="app.editState(cityrecord)">Edit State</button>
                     </td>
                 </tr>
                 </tbody>
@@ -53,6 +53,7 @@
     </form>
 </div>
 <script src="bower_components/angular/angular.js"></script>
+<script src="js/services/CityService.js"></script>
 <script src="js/controllers/controller.js"></script>
 </body>
 </html>
