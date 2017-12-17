@@ -11,8 +11,6 @@ CityService.factory('CityOpFactory', ['$http', function ($http) {
     var baseURL = 'http://0.0.0.0:8001/todo/api/v1.0/cities';
     var CityOpFactory = {};
 
-
-
     CityOpFactory.refreshCityStateService = function () {
         return $http.get(baseURL);
     };
