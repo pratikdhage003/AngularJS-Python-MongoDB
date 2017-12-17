@@ -24,16 +24,22 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><input class="form-control" ng-model="cityrecord.cname" name="cityName" size="default"></td>
-                    <td><input class="form-control" ng-model="cityrecord.state" name="stateName" size="default"></td>
+                    <td><input class="form-control" ng-model="cityrecord.cname" name="cityName" size="default" required>
+                    </td>
+                    <td><input class="form-control" ng-model="cityrecord.state" name="stateName" size="default"
+                               required>
+                    </td>
+
                     <td>
                         <button class="btn btn-primary" ng-click="CityApp.addCityState(cityrecord)"
-                                ng-disabled="cityForm.stateName.$pristine">Add New Record
+                                ng-disabled="cityForm.$invalid">
+                            Add New Record
                         </button>
                     </td>
                     <td>
-                        <button class="btn btn-info" ng-click="CityApp.updateState(cityrecord)"
-                                ng-disabled="cityForm.stateName.$pristine">Update State
+                        <button class="btn btn-info" ng-click="CityApp.updateState(cityrecord) "
+                                ng-disabled="cityForm.$invalid">
+                            Update State
                         </button>
                     </td>
                 </tr>
@@ -41,7 +47,8 @@
                     <td><b> {[{ cityrecord.cname }]} </b></td>
                     <td><b> {[{ cityrecord.state }]} </b></td>
                     <td>
-                        <button class="btn btn-danger" ng-click="CityApp.deleteCityState(cityrecord)">Delete Record</button>
+                        <button class="btn btn-danger" ng-click="CityApp.deleteCityState(cityrecord)">Delete Record
+                        </button>
                     </td>
                     <td>
                         <button class="btn btn-warning" ng-click="CityApp.editState(cityrecord)">Edit State</button>
