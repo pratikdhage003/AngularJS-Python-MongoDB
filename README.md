@@ -12,15 +12,32 @@ Docker : Build once, Run anywhere is the basic principle, hence Docker!
 Front End : AngularJS based (CityApp) code supporting CRUD operations for Cities (inside the folder angular-client/), 
 			index.html, CSS alongwith it.Running front end app on nginx server.
 
-			CityAppController.js  --> AngularJs Controller code calling factory service CityOpFactory(residing inside 	CityService.js) 	                     
+			app/angular-client/static/js/controllersCityAppController.js  --> 
+            AngularJs Controller code calling factory service CityOpFactory(residing inside 	CityService.js) 	                     
 
-			CityService.js --> contains factory service CityOpFactory for creating AngularJs services.
-							   also has REST API HTTP URLs, it then talks to flask-server   
+			app/angular-client/static/js/CityService.js --> 
+
+			contains factory service CityOpFactory for creating AngularJs services. It also has REST API HTTP URLs, it then talks to flask-server   
+
+
+			UI TESTING :
+
+			Karma Test runner file in the directory app/angular-client/static/tests/karma.conf.js 
+
+			UI TEST CASES : 
+
+			inside  app/angular-client/static/tests/units : 
+
+			Two Test cases written namely :
+
+				 1. testingCityAppControllerUnitSpec.js  for  the Controller CityAppController.js 
+				 2. testingCityServiceUnitSpec.js  for the Service CityService.js 
+
 
 BackEnd :  Python Flask based Python(flask-server/ folder) code supporting RESTful APIs for CRUD functionality, connected to 				   MongoDB database remote server, every REST API method has support of CORS enabled methods(Cross-Origin Resource Sharing  		  (CORS)  is a mechanism which uses additional HTTP headers to let a user agent gain permission to access selected 				       resources from  a  server on a different origin (domain) than the site currently in use)
 		   used PyMongo library for communicating with MongoDB database.
 
-Database : MongoDB as a database to store basic City Information, used a reomte database, embedded the URI link inside the flask Python code    
+Database : MongoDB as a database to store basic City Information, used a reomte database, embedded the URI link inside the         			   flask Python code    
 
 
 # how to run
