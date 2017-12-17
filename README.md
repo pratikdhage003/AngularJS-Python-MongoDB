@@ -3,9 +3,9 @@
 Dockerized Flask based RESTful full stack web Application for CITY INFORMATION, implemented using Python, AngularJS, HTML, JSON, MongoDB(PyMongo) and Docker.
 Contains support for API Versioning, Cross-Origin Resource Sharing (CORS).
 
-#COMPONENTS: 
+# COMPONENTS: 
 
-#Docker : Build once, Run anywhere is the basic principle, hence Docker! 
+# Docker : Build once, Run anywhere is the basic principle, hence Docker! 
 		
 		 NOTE :  In the file docker-compose.yml, port is to which angular-client("1111:80"), 
 		 		 flask-server("8001:8001" ) listen are different
@@ -15,8 +15,8 @@ Contains support for API Versioning, Cross-Origin Resource Sharing (CORS).
 		 	1. AngularJS Client its app/angular-client/static/Dockerfile  
 		 	2. Python flask-server backend its app/flask-server/Dockerfile
 
-
-#Front End : AngularJS based (CityApp) code supporting CRUD operations for Cities (inside the folder angular-client/), 
+ 
+# Front End : AngularJS based (CityApp) code supporting CRUD operations for Cities (inside the folder angular-client/), 
 			index.html, CSS alongwith it.Running front end app on nginx server.
 
 			app/angular-client/static/js/controllersCityAppController.js  --> 
@@ -41,10 +41,10 @@ Contains support for API Versioning, Cross-Origin Resource Sharing (CORS).
 				 2. testingCityServiceUnitSpec.js  for the Service CityService.js 
 
 
-#Flask:    For running flask application one needs requirements.txt file, it is residing in the directory app/flask-server 	
+# Flask:    For running flask application one needs requirements.txt file, it is residing in the directory app/flask-server 	
 
 
-#BackEnd :  Python Flask based Python file residing in directory 
+# BackEnd :  Python Flask based Python file residing in directory 
 
 			 app/flask-server/backend-app/app.py  --> 
 
