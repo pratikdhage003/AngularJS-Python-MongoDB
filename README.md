@@ -42,6 +42,31 @@ Contains support for API Versioning, Cross-Origin Resource Sharing (CORS).
 				 1. testingCityAppControllerUnitSpec.js for the Controller CityAppController.js 
 				 2. testingCityServiceUnitSpec.js  for the Service CityService.js 
 
+				 How to Run :
+
+				 goto directory app/angular-client/static/tests
+
+				 1. type "karma start karma.conf.js"  to run the karma test runner  
+
+
+				 Sample Code Coverage report after running karma test runner :
+
+				 .
+					PhantomJS 2.1.1 (Mac OS X 0.0.0): Executed 1 of 1 SUCCESS (0.111 secs / 0.032 secs)
+
+
+					-----------------------|----------|----------|----------|----------|----------------|
+					File                   |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
+					-----------------------|----------|----------|----------|----------|----------------|
+					 controllers/          |    35.14 |        0 |    17.65 |    35.14 |                |
+					  CityAppController.js |    35.14 |        0 |    17.65 |    35.14 |... 100,101,104 |
+					 services/             |    68.75 |      100 |    33.33 |    68.75 |                |
+					  CityService.js       |    68.75 |      100 |    33.33 |    68.75 | 21,25,31,36,42 |
+					-----------------------|----------|----------|----------|----------|----------------|
+					All files              |    45.28 |        0 |    21.74 |    45.28 |                |
+					-----------------------|----------|----------|----------|----------|----------------|
+
+
 
 # Flask:    For running flask application one needs requirements.txt file, it is residing in the directory app/flask-server 	
 
