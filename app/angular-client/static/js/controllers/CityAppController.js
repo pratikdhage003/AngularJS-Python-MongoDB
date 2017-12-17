@@ -43,8 +43,8 @@ CityApp.controller("CityAppController", function ($scope, $http, CityOpFactory) 
                 .then(function (response) {
 
                         app.citytable.push(response.data.output);
-                        $scope.cityrecord = {};
                         refreshData();
+                        $scope.cityrecord = {};
 
                     }, function (error) {
                         console.log('can not post the cityrecord data.' + error.message);
@@ -61,6 +61,7 @@ CityApp.controller("CityAppController", function ($scope, $http, CityOpFactory) 
 
                     $scope.cityrecord = response.data.output;
                     refreshData();
+                        $scope.cityrecord = {};
 
                 }, function (error) {
                     console.log('can not delete the given cityrecord data.' + error.message);
@@ -96,8 +97,8 @@ CityApp.controller("CityAppController", function ($scope, $http, CityOpFactory) 
                 .then(function (response) {
 
                         app.citytable.push(response.data.output);
-                        $scope.cityrecord = {};
                         refreshData();
+                        $scope.cityrecord = {};
 
                     }, function (error) {
                         console.log('can not update the given cityrecord data.' + error.message);
