@@ -9,7 +9,7 @@ services:
       - "1111:80" # specify port forwarding, 80 is the port of the container
 
   flask-service: # name of the flask-service built with Python backend
-    build: ./app/flask-server
+    build: ./app/flask-server/
     volumes:
       - ./app/flask-server:/usr/src/app
     ports:
