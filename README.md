@@ -1,5 +1,6 @@
 
 # angular-python-mongo
+
 Dockerized Flask based RESTful full stack web Application for CITY INFORMATION, implemented using Python, AngularJS, HTML, JSON, MongoDB(PyMongo) and Docker.
 Contains support for API Versioning, Cross-Origin Resource Sharing (CORS).
 
@@ -7,24 +8,25 @@ Contains support for API Versioning, Cross-Origin Resource Sharing (CORS).
 
 # Docker : Build once, Run anywhere is the basic principle, hence Docker! 
 		
-		 NOTE :  In the file docker-compose.yml, port is to which angular-client("1111:80"), 
-		 		 flask-server("8001:8001" ) listen are different
+		 NOTE :  In the file docker-compose.yml, port is to which angular-client("1111:80") on nginx server, 
+		 		 flask-server("8001:8001" ) on Flask server listen are different
 		 		
-		 	Separate DockerFile(in each folder for :
+		 	Separate DockerFile in each directory for :
 
 		 	1. AngularJS Client its app/angular-client/static/Dockerfile  
 		 	2. Python flask-server backend its app/flask-server/Dockerfile
 
  
-# Front End : AngularJS based (CityApp) code supporting CRUD operations for Cities (inside the folder angular-client/), 
-			index.html, CSS alongwith it.Running front end app on nginx server.
+# Front End : AngularJS based (CityApp) code supporting CRUD operations for Cities (inside the directory angular-client/), 
+			
+			1. HTML file located in app/angular-client/static/index.html, has CSS code embedded in it .
+			   Running front end app on nginx server.
 
-			app/angular-client/static/js/controllersCityAppController.js  --> 
-            AngularJs Controller code calling factory service CityOpFactory(residing inside CityService.js) 	                     
+			2. app/angular-client/static/js/controllersCityAppController.js  --> 
+               AngularJs Controller code calling factory service CityOpFactory(residing inside CityService.js) 	                     
 
-			app/angular-client/static/js/CityService.js --> 
-
-			contains factory service CityOpFactory for creating AngularJs services. It also has REST API HTTP URLs, it then talks to flask-server   
+			3. app/angular-client/static/js/CityService.js --> 
+			   contains factory service CityOpFactory for creating AngularJs services. It also has REST API HTTP URLs, it then talks to flask-server   
 
 
 			UI TESTING :
@@ -37,27 +39,29 @@ Contains support for API Versioning, Cross-Origin Resource Sharing (CORS).
 
 			Two Test cases written namely :
 
-				 1. testingCityAppControllerUnitSpec.js  for  the Controller CityAppController.js 
+				 1. testingCityAppControllerUnitSpec.js for the Controller CityAppController.js 
 				 2. testingCityServiceUnitSpec.js  for the Service CityService.js 
 
 
 # Flask:    For running flask application one needs requirements.txt file, it is residing in the directory app/flask-server 	
 
 
-# BackEnd :  Python Flask based Python file residing in directory 
-
-			 app/flask-server/backend-app/app.py  --> 
+# BackEnd :  Python Flask based Python file residing in directory :  app/flask-server/backend-app/app.py 
 
 			 1. Has support for RESTful APIs for CRUD functionality, connected to a remote MongoDB Olap database server, 
-			 2. every REST API method has support of CORS enabled methods(Cross-Origin Resource Sharing  		  (CORS)  is a mechanism which uses additional HTTP headers to let a user agent gain permission to access selected 				       resources from  a  server on a different origin (domain) than the site currently in use)
+			 2. every REST API method has support of CORS enabled methods(Cross-Origin Resource Sharing (CORS)  is a mechanism 
+			 	which uses additional HTTP headers to let a user agent gain permission to access selected resources from  a  server 
+			 	on a different origin (domain) than the site currently in use)
 			 3. used PyMongo library for communicating with  the MongoDB database.
 
-Database : MongoDB as a database to store basic City Information, used a reomte database, embedded the URI link inside the         			   flask Python code    
+Database : 
+           MongoDB as a database to store basic City Information, used a reomte database, 
+		   embedded the URI link inside the flask Python code    
 
 
 # how to run
 
-1. goto folder angularjs-python-mongo under your directory
+1. goto directory angularjs-python-mongo under your directory
 2. Next task is to run angular-js-client and flask-service using docker
 2. type in terminal :  docker-compose build
 3. type in terminal:  docker-compose up 
