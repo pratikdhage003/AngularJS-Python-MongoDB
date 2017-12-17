@@ -22,10 +22,10 @@ Contains support for API Versioning, Cross-Origin Resource Sharing (CORS).
 			1. HTML file located in app/angular-client/static/index.html, has CSS code embedded in it .
 			   Running front end app on nginx server.
 
-			2. app/angular-client/static/js/controllersCityAppController.js  --> 
+			2. app/angular-client/static/js/controllersCityAppController.js  :
                AngularJs Controller code calling factory service CityOpFactory(residing inside CityService.js) 	                     
 
-			3. app/angular-client/static/js/CityService.js --> 
+			3. app/angular-client/static/js/CityService.js : 
 			   contains factory service CityOpFactory for creating AngularJs services. It also has REST API HTTP URLs, it then talks to flask-server   
 
 
