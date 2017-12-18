@@ -4,7 +4,7 @@
 
 describe('factory : CityFactoryAPI', function () {
 
-    var CityFactoryAPI, $http, $httpBackend, cityrecord, cname, state;
+    var CityFactoryAPI, $http, $httpBackend, cityrecord;
     var baseURL = 'http://0.0.0.0:8001/todo/api/v1.0/cities/';
 
     beforeEach(module('CityApp'));
@@ -12,22 +12,9 @@ describe('factory : CityFactoryAPI', function () {
     //get your service, also get $httpBackend
     // $httpBackend will be a mock.
     beforeEach(inject(function (_CityFactoryAPI_, _$http_, _$httpBackend_) {
-
         CityFactoryAPI = _CityFactoryAPI_;
         $http = _$http_;
         $httpBackend = _$httpBackend_;
-
-        // $httpBackend.when('GET', baseURL).respond({
-        //     status: 200,
-        //     data: "data"
-        // });
-
-        // $httpBackend.when('POST', baseURL, cityrecord).respond({
-        //     status: 200,
-        //     data: "data"
-        // });
-
-
     }));
 
     // make sure no expectations were missed in unit tests.
@@ -41,114 +28,122 @@ describe('factory : CityFactoryAPI', function () {
 
         it('should display all the cities', function () {
 
-            var output = [
-                {
-                "cname": "New York",
-                "state": "NY"
-                },
-                {
-                    "cname": "Santa Clara",
-                    "state": "CA"
-                },
-                {
-                    "cname": "Mountain View",
-                    "state": "CA"
-                },
-                {
-                    "cname": "San Francisco",
-                    "state": "CA"
-                },
-                {
-                    "cname": "Austin",
-                    "state": "TX"
-                },
-                {
-                    "cname": "Los Angeles",
-                    "state": "CA"
-                },
-                {
-                    "cname": "Boston",
-                    "state": "MS"
-                },
-                {
-                    "cname": "Detroit",
-                    "state": "MI"
-                },
-                {
-                    "cname": "Seattle",
-                    "state": "WA"
-                },
-                {
-                    "cname": "Harrisburg",
-                    "state": "PA"
-                },
-                {
-                    "cname": "Salt Lake City",
-                    "state": "UT"
-                },
-                {
-                    "cname": "Dallas",
-                    "state": "TX"
-                },
-                {
-                    "cname": "San Jose",
-                    "state": "CA"
-                },
-                {
-                    "cname": "San Ramon",
-                    "state": "CA"
-                },
-                {
-                    "cname": "Arlington",
-                    "state": "TX"
-                },
-                {
-                    "cname": "Gillroy",
-                    "state": "CA"
-                },
-                {
-                    "cname": "Plano",
-                    "state": "TX"
-                },
-                {
-                    "cname": "Las Vegas",
-                    "state": "NV"
-                },
-                {
-                    "cname": "Chicago",
-                    "state": "IL"
-                },
-                {
-                    "cname": "Binghamton",
-                    "state": "NY"
-                },
-                {
-                    "cname": "Tampa",
-                    "state": "FL"
-                },
-                {
-                    "cname": "Santa Teresa",
-                    "state": "CA"
-                },
-                {
-                    "cname": "Pittsburg",
-                    "state": "PA"
-                },
-                {
-                    "cname": "Colorado",
-                    "state": "DV"
-                }];
+            var samplecitydata = {
+                "output": [
+                    {
+                        "cname": "New York",
+                        "state": "NY"
+                    },
+                    {
+                        "cname": "Santa Clara",
+                        "state": "CA"
+                    },
+                    {
+                        "cname": "Mountain View",
+                        "state": "CA"
+                    },
+                    {
+                        "cname": "San Francisco",
+                        "state": "CA"
+                    },
+                    {
+                        "cname": "Austin",
+                        "state": "TX"
+                    },
+                    {
+                        "cname": "Los Angeles",
+                        "state": "CA"
+                    },
+                    {
+                        "cname": "Boston",
+                        "state": "MS"
+                    },
+                    {
+                        "cname": "Detroit",
+                        "state": "MI"
+                    },
+                    {
+                        "cname": "Seattle",
+                        "state": "WA"
+                    },
+                    {
+                        "cname": "Harrisburg",
+                        "state": "PA"
+                    },
+                    {
+                        "cname": "Salt Lake City",
+                        "state": "UT"
+                    },
+                    {
+                        "cname": "Dallas",
+                        "state": "TX"
+                    },
+                    {
+                        "cname": "San Jose",
+                        "state": "CA"
+                    },
+                    {
+                        "cname": "San Ramon",
+                        "state": "CA"
+                    },
+                    {
+                        "cname": "Arlington",
+                        "state": "TX"
+                    },
+                    {
+                        "cname": "Gillroy",
+                        "state": "CA"
+                    },
+                    {
+                        "cname": "Plano",
+                        "state": "TX"
+                    },
+                    {
+                        "cname": "Las Vegas",
+                        "state": "NV"
+                    },
+                    {
+                        "cname": "Chicago",
+                        "state": "IL"
+                    },
+                    {
+                        "cname": "Binghamton",
+                        "state": "NY"
+                    },
+                    {
+                        "cname": "Tampa",
+                        "state": "FL"
+                    },
+                    {
+                        "cname": "Santa Teresa",
+                        "state": "CA"
+                    },
+                    {
+                        "cname": "Pittsburg",
+                        "state": "PA"
+                    },
+                    {
+                        "cname": "Colorado",
+                        "state": "DV"
+                    }]
 
-            $httpBackend.whenGET(baseURL)
-                .respond(output);
+            };
 
-           var value = $http.get(baseURL);
 
-            console.log(value);
+            console.log(samplecitydata);
+
+            $httpBackend.expectGET(baseURL).respond(200, samplecitydata);
+
+            var temp = this;
+
+            CityFactoryAPI.refreshCityStateService().then(function (result) {
+                console.log(result);
+                temp = result.data;
+            });
 
             $httpBackend.flush();
 
-           // expect(value[0]).toEqual("New York");
+            expect(temp).toEqual(samplecitydata);
         });
     });
 
