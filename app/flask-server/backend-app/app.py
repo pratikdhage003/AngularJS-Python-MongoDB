@@ -23,7 +23,7 @@ def index():
 
 
 # HTTP GET request for displaying all cities
-@app.route('/todo/api/v1.0/cities', methods=['GET'])
+@app.route('/todo/api/v1.0/cities/', methods=['GET'])
 @cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
 def get_all_city_records():
     cities = mongo.db.cities
@@ -34,7 +34,7 @@ def get_all_city_records():
 
 
 # HTTP POST request for adding new city
-@app.route('/todo/api/v1.0/cities', methods=['POST'])
+@app.route('/todo/api/v1.0/cities/', methods=['POST'])
 @cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
 def add_city_state():
     cities = mongo.db.cities

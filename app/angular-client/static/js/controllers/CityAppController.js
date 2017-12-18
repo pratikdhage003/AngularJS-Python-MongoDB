@@ -11,8 +11,8 @@ CityApp.config(['$interpolateProvider', function ($interpolateProvider) {
 }]);
 
 
-//Injected factory service 'CityOpFactory'
-CityApp.controller("CityAppController", function ($scope, $http, CityOpFactory) {
+//Injected factory service 'CityFactoryAPI'
+CityApp.controller("CityAppController", function ($scope, $http, CityFactoryAPI) {
 
     $scope.title = "this is just a starting !";
 
@@ -21,10 +21,13 @@ CityApp.controller("CityAppController", function ($scope, $http, CityOpFactory) 
     // display all data
     var refreshData = function () {
 
-        CityOpFactory.refreshCityStateService()
+        CityFactoryAPI.refreshCityStateService()
             .then(function (response) {
 
                     app.citytable = response.data.output;
+
+                    console.log(response.data);
+                    console.log(response.data.output);
 
                 }, function (error) {
                     console.log('can not get the data.' + error.message);
@@ -39,7 +42,7 @@ CityApp.controller("CityAppController", function ($scope, $http, CityOpFactory) 
     app.addCityState = function (cityrecord) {
         if (cityrecord.cname !== '' || cityrecord.state !== '') {
 
-            CityOpFactory.addCityStateService(cityrecord)
+            CityFactoryAPI.addCityStateService(cityrecord)
                 .then(function (response) {
 
                         app.citytable.push(response.data.output);
@@ -56,12 +59,12 @@ CityApp.controller("CityAppController", function ($scope, $http, CityOpFactory) 
     // deletes a given record
     app.deleteCityState = function (cityrecord) {
 
-        CityOpFactory.deleteCityStateService(cityrecord)
+        CityFactoryAPI.deleteCityStateService(cityrecord)
             .then(function (response) {
 
                     $scope.cityrecord = response.data.output;
                     refreshData();
-                        $scope.cityrecord = {};
+                    $scope.cityrecord = {};
 
                 }, function (error) {
                     console.log('can not delete the given cityrecord data.' + error.message);
@@ -74,7 +77,7 @@ CityApp.controller("CityAppController", function ($scope, $http, CityOpFactory) 
 
         if (cityrecord.cname !== '' || cityrecord.state !== '') {
 
-            CityOpFactory.editCityStateService(cityrecord)
+            CityFactoryAPI.editCityStateService(cityrecord)
                 .then(function (response) {
 
                         $scope.cityrecord = response.data.output;
@@ -93,7 +96,7 @@ CityApp.controller("CityAppController", function ($scope, $http, CityOpFactory) 
 
         if (cityrecord.cname !== '' || cityrecord.state !== '') {
 
-            CityOpFactory.updateCityStateService(cityrecord)
+            CityFactoryAPI.updateCityStateService(cityrecord)
                 .then(function (response) {
 
                         app.citytable.push(response.data.output);

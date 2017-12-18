@@ -4,47 +4,47 @@
 
 var CityService = angular.module('CityService', []);
 
-//created angular Service factory called 'CityOpFactory'
+//created angular Service factory called 'CityFactoryAPI'
 
-CityService.factory('CityOpFactory', ['$http', function ($http) {
+CityService.factory('CityFactoryAPI', ['$http', function ($http) {
 
-    var baseURL = 'http://0.0.0.0:8001/todo/api/v1.0/cities';
-    var CityOpFactory = {};
+    var baseURL = 'http://0.0.0.0:8001/todo/api/v1.0/cities/';
+    var CityFactoryAPI = {};
 
-    CityOpFactory.refreshCityStateService = function () {
-        return $http.get(baseURL);
+    CityFactoryAPI.refreshCityStateService = function () {
+
+        return $http({method: 'GET', url: baseURL});
     };
 
 
-    CityOpFactory.addCityStateService = function (cityrecord) {
+    CityFactoryAPI.addCityStateService = function (cityrecord) {
 
-        var newrecord = {
-            "cname": cityrecord.cname,
-            "state": cityrecord.state
-        }
-        return $http.post(baseURL, newrecord);
-
+        return $http({method: 'POST', url: baseURL, data: cityrecord});
     };
 
 
-    CityOpFactory.deleteCityStateService = function (cityrecord) {
-        return $http.delete(baseURL +'/' + cityrecord.cname);
+    CityFactoryAPI.deleteCityStateService = function (cityrecord) {
+
+        return $http({method: 'DELETE', url: baseURL + cityrecord.cname});
     };
 
 
-    CityOpFactory.editCityStateService = function (cityrecord) {
-        return $http.get(baseURL +'/' + cityrecord.cname);
+    CityFactoryAPI.editCityStateService = function (cityrecord) {
+
+        return $http({method: 'GET', url: baseURL + cityrecord.cname});
     };
 
 
-    CityOpFactory.updateCityStateService = function (cityrecord) {
+    CityFactoryAPI.updateCityStateService = function (cityrecord) {
 
-        return $http.put(baseURL +'/' + cityrecord.cname, {
-            "cname": cityrecord.cname,
-            "state": cityrecord.state
+        return $http({
+            method: 'PUT', url: baseURL + cityrecord.cname, data: {
+                "cname": cityrecord.cname,
+                "state": cityrecord.state
+            }
         });
     };
 
-    return CityOpFactory;
+    return CityFactoryAPI;
 
 }]);

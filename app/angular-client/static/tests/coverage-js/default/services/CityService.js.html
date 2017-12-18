@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">68.75% </span>
+        <span class="strong">73.33% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>11/16</span>
+        <span class='fraction'>11/15</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>2/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">68.75% </span>
+        <span class="strong">73.33% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>11/16</span>
+        <span class='fraction'>11/15</span>
       </div>
     </div>
   </div>
@@ -90,9 +90,7 @@
 45
 46
 47
-48
-49
-50</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+48</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -102,44 +100,42 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
  * Created by pratikdhage on 12/15/17.
@@ -147,48 +143,46 @@
 &nbsp;
 var CityService = angular.module('CityService', []);
 &nbsp;
-//created angular Service factory called 'CityOpFactory'
+//created angular Service factory called 'CityFactoryAPI'
 &nbsp;
-CityService.factory('CityOpFactory', ['$http', function ($http) {
+CityService.factory('CityFactoryAPI', ['$http', function ($http) {
 &nbsp;
-    var baseURL = 'http://0.0.0.0:8001/todo/api/v1.0/cities';
-    var CityOpFactory = {};
+    var baseURL = 'http://0.0.0.0:8001/todo/api/v1.0/cities/';
+    var CityFactoryAPI = {};
 &nbsp;
-    CityOpFactory.refreshCityStateService = function () {
-        return $http.get(baseURL);
+    var refreshCityStateService = <span class="fstat-no" title="function not covered" >function () {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return $http({method: 'GET', url: baseURL});</span>
     };
 &nbsp;
 &nbsp;
-    CityOpFactory.addCityStateService = <span class="fstat-no" title="function not covered" >function (cityrecord) {</span>
+    CityFactoryAPI.addCityStateService = function (cityrecord) {
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        var newrecord = {</span>
+        return $http({method: 'POST', url: baseURL, data: cityrecord});
+    };
+&nbsp;
+&nbsp;
+    CityFactoryAPI.deleteCityStateService = <span class="fstat-no" title="function not covered" >function (cityrecord) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return $http({method: 'DELETE', url: baseURL + cityrecord.cname});</span>
+    };
+&nbsp;
+&nbsp;
+    CityFactoryAPI.editCityStateService = <span class="fstat-no" title="function not covered" >function (cityrecord) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >       return $http({method: 'GET', url: baseURL + cityrecord.cname});</span>
+    };
+&nbsp;
+&nbsp;
+    CityFactoryAPI.updateCityStateService = <span class="fstat-no" title="function not covered" >function (cityrecord) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >         return $http({method: 'PUT', url: baseURL + cityrecord.cname, data :{</span>
             "cname": cityrecord.cname,
             "state": cityrecord.state
-        }
-<span class="cstat-no" title="statement not covered" >        return $http.post(baseURL, newrecord);</span>
-&nbsp;
+        }});
     };
 &nbsp;
-&nbsp;
-    CityOpFactory.deleteCityStateService = <span class="fstat-no" title="function not covered" >function (cityrecord) {</span>
-<span class="cstat-no" title="statement not covered" >        return $http.delete(baseURL +'/' + cityrecord.cname);</span>
-    };
-&nbsp;
-&nbsp;
-    CityOpFactory.editCityStateService = <span class="fstat-no" title="function not covered" >function (cityrecord) {</span>
-<span class="cstat-no" title="statement not covered" >        return $http.get(baseURL +'/' + cityrecord.cname);</span>
-    };
-&nbsp;
-&nbsp;
-    CityOpFactory.updateCityStateService = <span class="fstat-no" title="function not covered" >function (cityrecord) {</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >        return $http.put(baseURL +'/' + cityrecord.cname, {</span>
-            "cname": cityrecord.cname,
-            "state": cityrecord.state
-        });
-    };
-&nbsp;
-    return CityOpFactory;
+    return CityFactoryAPI;
 &nbsp;
 }]);</pre></td></tr>
 </table></pre>
@@ -196,7 +190,7 @@ CityService.factory('CityOpFactory', ['$http', function ($http) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Dec 17 2017 01:38:13 GMT-0800 (PST)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Dec 18 2017 01:33:21 GMT-0800 (PST)
 </div>
 </div>
 <script src="../prettify.js"></script>
