@@ -23,10 +23,10 @@ Contains support for API Versioning, Cross-Origin Resource Sharing (CORS).
 			   Running front end app on nginx server.
 
 			2. app/angular-client/static/js/controllersCityAppController.js  :
-               AngularJs Controller code calling factory service CityOpFactory(residing inside CityService.js) 	                     
+               AngularJs Controller code calling factory service CityFactoryAPI (residing inside CityService.js) 	                     
 
 			3. app/angular-client/static/js/CityService.js : 
-			   contains factory service CityOpFactory for creating AngularJs services. It also has REST API HTTP URLs, it then talks to flask-server   
+			   contains factory service CityFactoryAPI for creating AngularJs services. It also has REST API HTTP URLs, it then talks to flask-server   
 
 
 			UI TESTING :
