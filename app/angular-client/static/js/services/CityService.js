@@ -2,6 +2,8 @@
  * Created by pratikdhage on 12/15/17.
  */
 
+"use strict";
+
 var CityService = angular.module('CityService', []);
 
 //created angular Service factory called 'CityFactoryAPI'
