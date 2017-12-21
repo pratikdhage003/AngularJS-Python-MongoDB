@@ -2,6 +2,7 @@
  * Created by pratikdhage on 12/15/17.
  */
 
+"use strict";
 
 // added CityService as module dependency
 var CityApp = angular.module("CityApp", ["CityService"]);
