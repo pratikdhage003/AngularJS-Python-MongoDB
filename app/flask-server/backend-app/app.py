@@ -10,11 +10,10 @@ app = Flask(__name__, static_path='/static')
 
 cors = CORS(app, resources={r"/foo": {"origins": "http://localhost:port"}})
 
-app.config['MONGO_DBNAME'] = 'rest_python_mongo'
-app.config['MONGO_URI'] = 'mongodb://pratikdhage:thedarkknightrises@ds125113.mlab.com:25113/angularjs-python-mongo'
+app.config['MONGO_DBNAME'] = 'angularjs-python-mongo'
+app.config['MONGO_URI'] = 'mongodb://pratikdhage009:thedarkknightrises009@ds147942.mlab.com:47942/angularjs-python-mongo'
 
 mongo = PyMongo(app)
-
 
 @app.route('/todo/api/v1.0/')
 @cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
