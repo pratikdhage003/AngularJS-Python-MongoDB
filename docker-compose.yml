@@ -13,4 +13,4 @@ services:
     volumes:
       - ./app/flask-server:/usr/src/app
     ports:
-      - "8001:8001"                 
+      - "8001:90"                 
