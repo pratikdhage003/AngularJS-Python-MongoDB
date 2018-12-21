@@ -72,7 +72,7 @@ Contains support for API Versioning, Cross-Origin Resource Sharing (CORS).
 # Flask:    For running flask application one needs requirements.txt file, it is residing in the directory app/flask-server 	
 
 
-# BackEnd :  Python Flask based Python file residing in directory :  app/flask-server/backend-app/app.py 
+# BackEnd :  Python Flask based Python file residing in directory :  app/flask-server/app.py 
 
 			 1. Has support for RESTful APIs for CRUD functionality, connected to a remote MongoDB Olap database server, 
 			 2. every REST API method has support of CORS enabled methods(Cross-Origin Resource Sharing (CORS)  is a mechanism 
