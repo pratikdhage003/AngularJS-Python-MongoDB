@@ -9,7 +9,7 @@ Contains support for API Versioning, Cross-Origin Resource Sharing (CORS).
 # Docker : Build once, Run anywhere is the basic principle, hence Docker! 
 		
 		 NOTE :  In the file docker-compose.yml, port is to which angular-client("1111:80") on nginx server, 
-		 		 flask-server("8001:8001" ) on Flask server listen are different
+		 		 flask-server("8001:90" ) on Flask server listen are different
 		 		
 		 	Separate DockerFile in each directory for :
 
