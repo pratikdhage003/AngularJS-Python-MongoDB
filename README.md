@@ -1,8 +1,12 @@
 
 # angular-python-mongo
 
-Dockerized Flask based RESTful full stack web Application for CITY INFORMATION, implemented using Python, AngularJS, HTML, JSON, MongoDB(PyMongo) and Docker.
+Dockerized Flask based RESTful full stack web Application for CITY INFORMATION, implemented using Python, AngularJS, HTML, JSON, MongoDB(PyMongo) and Docker. Deployed application using AWS ECS conatiner services, ran the instances using AWS EC2 instance.
 Contains support for API Versioning, Cross-Origin Resource Sharing (CORS).
+
+Full stack  live application:  ( http://3.17.134.171:1111/ )
+Flask-backend :  ( http://ec2-3-17-134-171.us-east-2.compute.amazonaws.com:8001/todo/api/v1.0/cities/ )
+
 
 # COMPONENTS: 
 
@@ -80,12 +84,15 @@ Contains support for API Versioning, Cross-Origin Resource Sharing (CORS).
 			 	on a different origin (domain) than the site currently in use)
 			 3. used PyMongo library for communicating with  the MongoDB database.
 
-Database : 
+# Database : 
            MongoDB as a database to store basic City Information, used a reomte database, 
-		   embedded the URI link inside the flask Python code    
+		   embedded the URI link inside the flask Python code, situated in mLAB distributed MongoDB server.
+
+# AWS ECS Container Services :
+		   Deployed the docker containers into AWS cloud using ECS container services, ran the instances using AWS EC2 service.Created security groups for each component. 	
 
 
-# how to run
+# how to run using docker into the local environment using localhost
 
 1. goto directory angularjs-python-mongo under your directory
 2. Next task is to run angular-js-client and flask-service using docker
