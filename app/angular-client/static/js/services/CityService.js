@@ -10,7 +10,7 @@ var CityService = angular.module('CityService', []);
 
 CityService.factory('CityFactoryAPI', ['$http', function ($http) {
 
-    var baseURL = 'http://0.0.0.0:8001/todo/api/v1.0/cities/';
+    var baseURL = 'http://3.17.134.171:8001/todo/api/v1.0/cities/';
     var CityFactoryAPI = {};
 
     CityFactoryAPI.refreshCityStateService = function () {
