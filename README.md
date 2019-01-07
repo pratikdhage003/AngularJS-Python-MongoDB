@@ -5,8 +5,6 @@ AWS ECS Docker containerized Flask based RESTful full stack web Application for 
 Contains support for API Versioning, Cross-Origin Resource Sharing (CORS).
 
 Full stack Web - live application:  ( http://ec2-3-17-27-255.us-east-2.compute.amazonaws.com:1111 )
-Flask-backend :  ( http://ec2-3-17-27-255.us-east-2.compute.amazonaws.com:8001/todo/api/v1.0/cities/ )
-
 
 # COMPONENTS: 
 
