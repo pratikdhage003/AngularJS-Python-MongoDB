@@ -43,7 +43,7 @@
                         </button>
                     </td>
                 </tr>
-                <tr collection-repeat="cityrecord in CityApp.citytable">
+                <tr ng-repeat="cityrecord in CityApp.citytable">
                     <td><b> {[{ cityrecord.cname }]} </b></td>
                     <td><b> {[{ cityrecord.state }]} </b></td>
                     <td>
