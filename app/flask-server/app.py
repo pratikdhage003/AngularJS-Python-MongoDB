@@ -8,7 +8,7 @@ from flask_cors import CORS, cross_origin
 
 app = Flask(__name__, static_path='/static')
 
-cors = CORS(app, resources={r"/foo": {"origins": "http://localhost:port"}})
+cors = CORS(app, resources={r"/foo": {"origins": "http://0.0.0.0:port"}})
 
 app.config['MONGO_DBNAME'] = 'angularjs-python-mongo'
 app.config['MONGO_URI'] = 'mongodb://pratikdhage009:thedarkknightrises009@ds147942.mlab.com:47942/angularjs-python-mongo'
@@ -16,14 +16,14 @@ app.config['MONGO_URI'] = 'mongodb://pratikdhage009:thedarkknightrises009@ds1479
 mongo = PyMongo(app)
 
 @app.route('/todo/api/v1.0/')
-@cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
+@cross_origin(origin='0.0.0.0', headers=['Content- Type', 'Authorization'])
 def index():
     return render_template("cities.html")
 
 
 # HTTP GET request for displaying all cities
 @app.route('/todo/api/v1.0/cities/', methods=['GET'])
-@cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
+@cross_origin(origin='0.0.0.0', headers=['Content- Type', 'Authorization'])
 def get_all_city_records():
     cities = mongo.db.cities
     output = []
@@ -34,7 +34,7 @@ def get_all_city_records():
 
 # HTTP POST request for adding new city
 @app.route('/todo/api/v1.0/cities/', methods=['POST'])
-@cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
+@cross_origin(origin='0.0.0.0', headers=['Content- Type', 'Authorization'])
 def add_city_state():
     cities = mongo.db.cities
     cityname = request.json['cname']
@@ -47,7 +47,7 @@ def add_city_state():
 
 # HTTP GET request for getting a particular city
 @app.route('/todo/api/v1.0/cities/<string:cname>', methods=['GET'])
-@cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
+@cross_origin(origin='0.0.0.0', headers=['Content- Type', 'Authorization'])
 def get_city_record(cname):
     cities = mongo.db.cities
     q = cities.find_one({'cname': cname})
@@ -60,7 +60,7 @@ def get_city_record(cname):
 
 # HTTP PUT request for modifying existing city
 @app.route('/todo/api/v1.0/cities/<string:cname>', methods=['PUT'])
-@cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
+@cross_origin(origin='0.0.0.0', headers=['Content- Type', 'Authorization'])
 def update_state(cname):
     cities = mongo.db.cities
     data = request.get_json()
@@ -70,7 +70,7 @@ def update_state(cname):
 
 # HTTP DELETE request for deleting/removing a particular city
 @app.route('/todo/api/v1.0/cities/<string:cname>', methods=['DELETE'])
-@cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
+@cross_origin(origin='0.0.0.0', headers=['Content- Type', 'Authorization'])
 def delete_city_record(cname):
     cities = mongo.db.cities
     q = cities.find_one({'cname': cname})
