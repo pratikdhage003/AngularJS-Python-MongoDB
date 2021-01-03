@@ -4,6 +4,9 @@
 AWS ECS Docker containerized Flask based RESTful full stack web Application for CITY INFORMATION, implemented using Python, AngularJS, HTML, JSON, MongoDB(PyMongo) and Docker. Deployed application using AWS ECS conatiner services, ran the instances using AWS EC2 instance.
 Contains support for API Versioning, Cross-Origin Resource Sharing (CORS).
 
+Live Application on AWS Screenshot : ![Screenshot_20201207-222502](https://user-images.githubusercontent.com/30219858/103489648-d78ce600-4dca-11eb-9b2c-cb3d2993f0c0.png)
+
+
 Full stack Web - live application:  ( http://ec2-3-17-27-255.us-east-2.compute.amazonaws.com:1111 )
 
 # COMPONENTS: 
